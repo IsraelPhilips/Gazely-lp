@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function RevealEffects() {
   useEffect(() => {
     const items = Array.from(document.querySelectorAll<HTMLElement>(
-      "[data-reveal], .hero-copy, .product-scene, .brand-statement, .problem-grid, .problem-strip, .section-heading, .step-card, .benefit-intro, .benefit-list article, .platform-card, .pricing-card, .faq-layout > div, .final-cta h2, .final-cta > p, .final-cta > .button, .cta-foot, .footer-inner"
+      "[data-reveal], .hero-copy, .product-scene, .brand-statement, .problem-grid, .problem-strip, .section-heading, .step-card, .benefit-intro, .benefit-list article, .platform-card, .offline-section, .pricing-card, .faq-layout > div, .final-cta h2, .final-cta > p, .final-cta > .button, .cta-foot, .footer-inner"
     ));
     const motionSections = Array.from(document.querySelectorAll<HTMLElement>("[data-section-motion]"));
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

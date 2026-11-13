@@ -1,6 +1,6 @@
 import Navigation from "./Navigation";
 import RevealEffects from "./RevealEffects";
-import AssistantEmote from "./AssistantEmote";
+import { DoveCompanion } from "./AssistantEmote";
 
 const steps = [
   { n: "01", title: "Start listening", text: "Open Gazely and let it listen through your team's microphone." },
@@ -20,7 +20,9 @@ const faqs = [
 function Arrow() { return <span aria-hidden="true">↗</span>; }
 
 function ProductIllustration() {
-  return <div className="product-scene" aria-label="Illustration of Gazely preparing a scripture for an operator to review" role="img">
+  return <div className="hero-artwork">
+    <div className="hero-dove-peek" aria-hidden="true"><DoveCompanion/></div>
+    <div className="product-scene" aria-label="Illustration of Gazely preparing a scripture for an operator to review" role="img">
     <svg className="service-illustration" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <linearGradient id="room" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#292d26"/><stop offset="1" stopColor="#171916"/></linearGradient>
@@ -59,7 +61,8 @@ function ProductIllustration() {
     <div className="connector"><span/></div>
     <div className="scripture-card"><div className="scripture-top"><span className="ready-pill"><b/> REFERENCE FOUND</span><span className="more">•••</span></div><small>PSALM 23:1–3 <em>· NIV</em></small><p>“The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures…”</p><div className="card-foot"><span>Ready to preview</span><span className="lime-check">✓</span></div></div>
     <div className="operator-chip"><span className="operator-avatar"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#d9dfc8"/><path d="M7 39c1.7-8 6.3-12 13-12s11.3 4 13 12" fill="#272c25"/><path d="M13 17c0-6 3-10 8-10 4.7 0 7 3.7 7 9.4v4.4c0 4.7-3.2 7.2-7.5 7.2-4.5 0-7.5-3-7.5-7.2z" fill="#bd8060"/><path d="M13 17c-.5-6.1 3-11 8.5-11 5 0 8 3.7 7.2 10.2-2.2-2.1-4-4.4-4.6-6.1-2.1 2.4-5.3 3.7-10 4.2z" fill="#252822"/><path d="M16 19h.1m8 0h.1" stroke="#34251f" strokeWidth="1.4" strokeLinecap="round"/></svg></span><span className="operator-copy"><strong>Mina <i>·</i> media team</strong><small>Reviewing the passage</small></span><span className="operator-status"/></div>
-    <div className="scene-caption">YOU’RE ALWAYS IN CONTROL <span>—</span> REVIEW BEFORE IT GOES LIVE</div>
+    <div className="scene-caption">YOU’RE ALWAYS IN CONTROL <span>·</span> REVIEW BEFORE IT GOES LIVE</div>
+    </div>
   </div>;
 }
 
@@ -67,12 +70,11 @@ export default function Home() {
   return <>
     <RevealEffects/>
     <Navigation/>
-    <AssistantEmote />
     <main id="top">
       <section className="hero container" data-emote="listening">
         <div className="hero-copy">
           <h1>Your church presentation<br/><span>just got smarter.</span><br/><em className="hero-ai">with AI</em></h1>
-          <p className="hero-lede">Gazely listens during the service, recognizes Bible references, and prepares scripture inside the presentation software your team already uses.</p>
+          <p className="hero-lede">Gazely listens during the service, recognizes Bible references, and prepares scripture inside the presentation software your team already uses, even offline.</p>
           <p className="hero-sub">Less searching for your team. More room to stay present.</p>
           <div className="hero-actions"><a className="button button-dark" href="#get-started">Get Gazely free <Arrow/></a><a className="text-link" href="#how-it-works">See how it works <span>↓</span></a></div>
           <div className="hero-note"><span className="note-rule"/>Starting with EasyWorship 7 <span className="note-sep">·</span> More platforms on the way</div>
@@ -106,11 +108,11 @@ export default function Home() {
               <path d="M339 143h144l-12 18H350z" fill="#53594e"/><rect x="364" y="133" width="88" height="7" rx="3" fill="#b8f34a" opacity=".74"/>
               <path className="lookup-trail" d="M321 64c13-8 23-8 34 0" fill="none" stroke="#a8ae9e" strokeWidth="2" strokeDasharray="3 5"/>
             </svg></div>
-            <div className="before-sequence" aria-label="Manual scripture workflow">
-              <div><span>01</span><b>Quoted</b><small>A verse is spoken</small></div>
-              <div className="sequence-scramble"><span>02</span><b>Search</b><small>Flip between web & Bible</small></div>
-              <div><span>03</span><b>Prepare</b><small>Find verse · choose translation</small></div>
-              <div><span>04</span><b>Present</b><small>Put it on screen</small></div>
+            <div className="before-sequence" aria-label="The scramble of finding and preparing a quoted verse">
+              <div className="chaos-quote"><span>“Romans… 12?”</span><b>A verse is quoted</b></div>
+              <div className="sequence-scramble"><span className="search-tab">Bible</span><span className="search-tab search-tab-web">Web search</span><b>Where was it?</b></div>
+              <div className="chaos-translation"><span>KJV</span><span> NIV </span><b>Find the right translation</b></div>
+              <div className="chaos-present"><span className="typing-caret"/><b>Format. Cue. Put it live.</b></div>
             </div>
             <div className="comparison-foot"><span className="comparison-dash"/> The service keeps moving.</div>
           </article>
@@ -128,13 +130,24 @@ export default function Home() {
       </div></section>
 
       <section className="benefits section container" data-emote="calm"><div className="benefit-intro"><h2>Better projection.<br/><span>Without changing everything.</span></h2><p>Helpful intelligence that fits into the way your team already serves.</p><a className="text-link" href="#compatibility">Explore compatibility <span>→</span></a></div>
-        <div className="benefit-list"><article><span className="benefit-symbol">↗</span><div><h3>Keep the tools you know</h3><p>Gazely works alongside your existing presentation software.</p></div></article><article><span className="benefit-symbol">⌕</span><div><h3>Less manual searching</h3><p>AI finds the spoken reference and prepares a passage, so your team spends less time typing and searching.</p></div></article><article><span className="benefit-symbol">◷</span><div><h3>Stay with the service</h3><p>Give your media team room to follow the message and manage the rest.</p></div></article><article><span className="benefit-symbol benefit-lime">✓</span><div><h3>Your team stays in control</h3><p>Gazely prepares. Your operator decides what appears on screen.</p></div></article></div>
+        <div className="benefit-list"><article><span className="benefit-symbol">↗</span><div><h3>Keep the tools you know</h3><p>Gazely works alongside your existing presentation software, even without an internet connection.</p></div></article><article><span className="benefit-symbol">⌕</span><div><h3>Less manual searching</h3><p>AI finds the spoken reference and prepares a passage, so your team spends less time typing and searching.</p></div></article><article><span className="benefit-symbol">◷</span><div><h3>Stay with the service</h3><p>Give your media team room to follow the message and manage the rest.</p></div></article><article><span className="benefit-symbol benefit-lime">✓</span><div><h3>Your team stays in control</h3><p>Gazely prepares. Your operator decides what appears on screen.</p></div></article></div>
       </section>
 
-      <section className="compat-section" id="compatibility" data-emote="curious" data-section-motion><div className="container section"><div className="section-heading compat-heading"><h2>One assistant.<br/>More ways to present.</h2><p>Gazely works alongside the presentation software your team already uses—starting with EasyWorship 7, with more integrations on the way.</p></div>
+      <section className="compat-section" id="compatibility" data-emote="curious" data-section-motion><div className="container section"><div className="section-heading compat-heading"><h2>One assistant.<br/>More ways to present.</h2><p>Gazely works alongside the presentation software your team already uses, starting with EasyWorship 7, with more integrations on the way.</p></div>
         <div className="platform-grid"><article className="platform-card platform-available"><div className="platform-status"><span className="status-dot"/> AVAILABLE NOW</div><img className="platform-logo easyworship-logo" src="/easyworship-transparent.png" alt="EasyWorship logo"/><h3>EasyWorship 7</h3><p>AI-powered scripture detection and preparation, alongside your existing workflow.</p><a href="#get-started">Gazely for EasyWorship <span>↗</span></a></article><article className="platform-card"><div className="platform-status">ON THE ROADMAP</div><img className="platform-logo propresenter-logo" src="/propresenter.svg" alt="ProPresenter logo"/><h3>ProPresenter</h3><p>Bring Gazely's scripture assistance to your ProPresenter workflow.</p><div className="platform-foot">INTEGRATION IN PROGRESS</div></article><article className="platform-card"><div className="platform-status">ON THE ROADMAP</div><img className="platform-logo freeshow-logo" src="/freeshow.png" alt="FreeShow logo"/><h3>FreeShow</h3><p>Extend AI-powered scripture preparation to FreeShow teams.</p><div className="platform-foot">INTEGRATION IN PROGRESS</div></article></div>
         <p className="platform-note">Gazely stays the same. It simply works with more of the tools you trust.</p>
       </div></section>
+
+      <section className="offline-section" aria-labelledby="offline-title" data-section-motion>
+        <div className="container offline-inner">
+          <div className="offline-lead"><h2 id="offline-title">No signal?<br/><span>Still serving.</span></h2><p>Gazely is built to keep helping when the internet doesn’t show up.</p></div>
+          <div className="offline-points">
+            <article><span className="offline-icon offline-icon-signal" aria-hidden="true"><i/><i/><i/></span><div><h3>Works offline</h3><p>Keep scripture assistance with you, even without internet.</p></div></article>
+            <article><span className="offline-icon" aria-hidden="true"><i className="offline-screen"/><i className="offline-stand"/></span><div><h3>Fits your setup</h3><p>Use the presentation software and workflow your team already knows.</p></div></article>
+            <article><span className="offline-icon offline-icon-free" aria-hidden="true">Free</span><div><h3>Free to get started</h3><p>Try Gazely with no upfront subscription.</p></div></article>
+          </div>
+        </div>
+      </section>
 
       <section className="pricing section container" data-emote="hopeful"><div className="pricing-card"><div><h2>Powerful assistance<br/>shouldn't be out of reach.</h2><p>Try a smarter way to handle scripture projection with Gazely's free plan. No subscription required to get started.</p></div><div className="pricing-action"><div className="price"><strong>Free</strong><span>to get started</span></div><a className="button button-dark" href="#get-started">Get Gazely free <Arrow/></a><small>Optional paid plans for teams that need more.</small></div><span className="pricing-orbit"/></div></section>
 
